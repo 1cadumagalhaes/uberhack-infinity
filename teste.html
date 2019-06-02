@@ -14,7 +14,7 @@
         var items = [];
         $.each( data, function( key, val ) {
             let stations = JSON.stringify(val);
-            items.push( "<li id='" + key + "'>" + stations.title + ", lat: " + stations.location.latitude +" long:"+ stations.location.longitude+ "</li>" );
+            items.push( "<li id='" + key + "'>" + stations.title + "</li>" );
         });
         
         $( "<ul/>", {
