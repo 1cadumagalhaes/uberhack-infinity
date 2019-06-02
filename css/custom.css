@@ -29,13 +29,19 @@
 }
 
 .control{
-    height: 580px; 
+    max-height: 700px; 
     overflow: auto;
 }
 
 .floating{
-    position: sticky; 
+    position: fixed; 
     bottom: 10px;
-    left:15px;
     margin-left: 25px;
+    
+}
+
+.time{
+    width: fit-content; 
+    padding: 15px; 
+    font-size: 16px;
 }
