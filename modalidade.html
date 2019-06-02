@@ -49,7 +49,7 @@
                 var price = (name=="uberX")?"R$31.03":"R$48.43";
                 var image = (name=="uberX") ? "src/uberx.png" : "src/black.JPG";
                 var style = (name=="BLACK") ? "width: 105px;height: 100px; margin-left: -10px;" : ""
-                var item ="<li class='collection-ite'>"+
+                var item ="<li id='"+id+"'class='collection-ite'>"+
                             "<div class='row'><h5>"+description+"</h5></div>"+
                             "<div class='center'><img class='circle' src='"+image+"' style='"+style+"'></div>"+
                             "<div class='row center'><span class='badge typebadge'>"+name+"</span></div>"+
@@ -65,6 +65,10 @@
                 "class": "collection list",
                 html: items.join( "" )
             }).appendTo( "#lista" );
+            
+            function submit(){
+                
+            }
         });
     </script>
 
