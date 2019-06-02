@@ -1,0 +1,14 @@
+.step{
+    text-align: left;
+    color: gray;
+}
+.list{
+    border:0;
+}
+.typebadge{
+    margin: 0!important;
+    float: none!important; 
+    color: white!important;
+    background: black!important;
+    border-radius: 50%!important;
+}
