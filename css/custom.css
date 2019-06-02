@@ -16,13 +16,13 @@
 }
 
 .local{
-    max-width: 85%;
+    max-width: 75%;
 }
     
 .teste{
     width: fit-content; 
     padding:10px!important;
-    border: 1px solid black;
+    
     font-size: 24px;
     font-weight: bold;
     margin: 0;
@@ -44,4 +44,9 @@
     width: fit-content; 
     padding: 15px; 
     font-size: 16px;
+    background: #26a69a;
+}
+
+body{
+    background: #B5F2E9;
 }
