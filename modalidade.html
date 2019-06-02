@@ -46,13 +46,14 @@
                 var name = product.name;
                 var description = product.description;
                 var id = product.product_id;
+                var price = (name=="uberX")?"R$31.03":"R$48.43";
                 var image = (name=="uberX") ? "src/uberx.png" : "src/black.JPG";
                 var style = (name=="BLACK") ? "width: 105px;height: 100px; margin-left: -10px;" : ""
                 var item ="<li class='collection-ite'>"+
                             "<div class='row'><h5>"+description+"</h5></div>"+
                             "<div class='center'><img class='circle' src='"+image+"' style='"+style+"'></div>"+
                             "<div class='row center'><span class='badge typebadge'>"+name+"</span></div>"+
-                            "<div class='center'><h5>R$00,00</h5></div>"+
+                            "<div class='center'><h5>"+price+"</h5></div>"+
                             "<a href='viagem.html' class='waves-effect waves-teal btn'>Escolher UberX</a>"+
                         "</li>"
                 items.push(item);
