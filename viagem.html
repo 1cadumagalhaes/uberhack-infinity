@@ -6,8 +6,18 @@
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
           <link type="text/css" rel="stylesheet" href="css/custom.css" />
+          <script src="js/jquery-3.4.1.min.js"></script>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <script>
+            var num = (Math.floor(Math.random() * 10) + 1).toString();
+            $(document ).ready(
+            function(){
+                console.log(num);
+                $('#minutos').text(num+" minutos");
+            });
+            
+      </script>
   </head>
 
   <body>
@@ -20,14 +30,14 @@
         <div class="row" style="padding: 15px;">
             <div class="col s2"></div>
             <div class="col s2" style="padding-top: 10px;"><img src="src/driver.png" alt="" class="circle" style=" width: 80px;height: 80px;"></div>
-            <div class="col s6" style="padding: 10px; text-align: right; margin-right: -10px;">    
+            <div class="col s5" style="padding: 10px; text-align: right; margin-right: -10px;">    
                 <h5><b>Júlia</b></h5> 
                 <h6><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons" style="margin-right: -5px;">star_half</i></h6>
                 
             </div>
         </div>
         <div class="row">
-            <h5 class="center">  Placa</h5>
+            <h5 class="center">  Placa do veículo</h5>
             <div class="col s3"></div>
             <div class="card center col s6 teste">ABC-1234</div>
         </div>
@@ -35,13 +45,13 @@
         <br>
         <br>
         <div class="row center">
-            <h5>Veículo: <b>TOP GEAR</b></h5>
+            <h5>Veículo: <b>Lancer Evolution</b></h5>
         </div>
         <div class="row center">
             <div class="col s3"></div>
         <div class="card-panel white-text col s6 time">
             <p><i class="material-icons left">access_time</i>Seu carro chega em:</p>
-            <p><b>X minutos</b></p>
+            <p><b id="minutos"></b></p>
             
         </div>
         </div>
