@@ -13,8 +13,8 @@
         $.getJSON( "src/stations.json", function( data ) {
         var items = [];
         $.each( data, function( key, val ) {
-            let stations = JSON.stringify(val);
-            items.push( "<li id='" + key + "'>" + stations.title + "</li>" );
+            //let stations = JSON.stringify(val);
+            items.push( "<li id='" + key + "'>" + val.stations.title + "</li>" );
         });
         
         $( "<ul/>", {
