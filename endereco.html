@@ -8,7 +8,47 @@
     <link type="text/css" rel="stylesheet" href="css/custom.css" />
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <script src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        $.urlParam = function(name){
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            return results[1] || 0;
 
+        }
+        
+        $.getJSON( "src/stations.json", function( data ) {
+            var items = [];
+            var stations = [];
+            var str = $.urlParam('s');
+            var r = new RegExp(decodeURI(str), 'i');
+            $.each( data, function( key, val ) {
+                
+                var station = {
+                    title: val.title, 
+                    long: val.location.longitude.toString(), 
+                    lat: val.location.latitude.toString(),
+                    address: val.location.address.toString()
+                };
+                if(station.title.search(r)!=-1)
+                    stations.push(station);
+
+
+            });
+            console.log(stations);
+
+            $.each(stations, function(key,station) {
+                let param = 'lng='+station.long+'&lat='+station.lat;
+                items.push( "<li class='collection-item avatar' id='" + (station.title) + "'><i class='material-icons circle'>location_on</i><span class='title'>"+(station.title)+"</span><p>"+(station.address)+"</p><a href='modalidade.html?"+param+"' class='secondary-content btn'>Ir</a></li>" );
+            })
+
+
+
+            $( "<ul/>", {
+                "class": "collection",
+                html: items.join( "" )
+            }).appendTo( "#step" );
+        });
+    </script>
 
 
   </head>
@@ -19,21 +59,21 @@
         <div class="container">
           <br><br>
           
-          <p style="text-align: left; color:gray">Passo 2 de X</p>
-            <ul class="collection" style="border: 0">
+          <p class="step" id='step'>Passo 2 de X</p>
+            <ul class="collection list">
+                
+                
+                
+                <!-- model
                 <li class="collection-item avatar">
-                <i class="material-icons circle">folder</i>
+                <i class="material-icons circle">location_on</i>
                 <span class="title">Lugar</span>
                 <p>Endereço
                 </p>
-                <a href="modalidade.html" class="secondary-content"><i class="material-icons">send</i></a>
+                <a href="modalidade.html" class="secondary-content btn">Ir</a>
                 </li>
-                <li class="collection-item avatar">
-                <i class="material-icons circle red">play_arrow</i>
-                <span class="title">Lugar</span>
-                <p>Endereço
-                <a href="modalidade.html" class="secondary-content"><i class="material-icons">send</i></a>
-                </li>
+                -->
+
             </ul>
 
     
