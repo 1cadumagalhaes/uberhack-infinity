@@ -18,10 +18,12 @@
 
         }
         
+        
         $.getJSON( "src/stations.json", function( data ) {
             var items = [];
             var stations = [];
             var str = $.urlParam('s')||'';
+            str=str.replace('+',' ');
             console.log(str);
             var r = new RegExp(decodeURI(str), 'i');
             $.each( data, function( key, val ) {
