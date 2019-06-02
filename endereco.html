@@ -37,8 +37,7 @@
 
 
             });
-            console.log(stations);
-
+            
             $.each(stations, function(key,station) {
                 let param = 'lng='+station.long+'&lat='+station.lat;
                 items.push( "<li class='collection-item avatar' id='" + (station.title) + "'><i class='material-icons circle'>location_on</i><div class='local'><span class='title'>"+(station.title)+"</span><p>"+(station.address)+"</p></div><a href='modalidade.html?"+param+"' class='secondary-content btn'>Ir<i class='material-icons right'>send</i></a></li>" );
@@ -47,9 +46,9 @@
 
 
             $( "<ul/>", {
-                "class": "collection",
+                "class": "collection list",
                 html: items.join( "" )
-            }).appendTo( "#step" );
+            }).appendTo( "#list" );
         });
     </script>
 
@@ -62,11 +61,13 @@
           <br><br>
           
           <p class="step" id='step'>Passo 2 de 4</p>
-            <ul class="collection list">
+            <div id="list"></div>
+          
+          <!--<ul class="collection list">
                 
                 
                 
-                <!-- model
+                 model
                 <li class="collection-item avatar">
                 <i class="material-icons circle">location_on</i>
                 <div class="local"><span class="title">Lugar</span>
@@ -74,10 +75,10 @@
                 </p></div>
                 <a href="modalidade.html" class="secondary-content btn">Ir</a>
                 </li>
-                -->
+                
 
             </ul>
-
+            -->
 
         </div>
                 <div class="floating">

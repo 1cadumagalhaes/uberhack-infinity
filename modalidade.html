@@ -8,52 +8,96 @@
     <link type="text/css" rel="stylesheet" href="css/custom.css" />
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        $.urlParam = function(name){
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results != null)
+                return results[1] || '';
+            return '';
+
+        }
+        
+        var start_latitude='23.5491665', start_longitude='-46.7357083'; //geoloc do hubSP
+        var end_latitude=$.urlParam('lat'), end_longitude=$.urlParam('lng');
+        
+        var Product = {product_id:'id',start_latitude,start_longitude,end_latitude,end_longitude,seat_count:'2'};
+        console.log(Product);
+        
+        $.getJSON( "src/products.json", function( data ) {
+            var items = [];
+            var products = []
+
+            $.each( data, function( key, val ) {
+                 //console.log(val);
+                $.each(val, function(k,v){
+                    var nome = v.display_name;
+                    var product = {
+                        name:nome,
+                        description:(nome=="uberX")?"O UBER MAIS BARATO":"O UBER ORIGINAL",
+
+                        product_id:v.product_id,
+                    };
+                   if(product.name=="BLACK"||product.name=="uberX")
+                        products.push(product);
+                })
+              });
+            $.each(products, function(key, product){
+                var name = product.name;
+                var description = product.description;
+                var id = product.product_id;
+                var image = (name=="uberX") ? "src/uberx.png" : "src/black.JPG";
+                var style = (name=="BLACK") ? "width: 105px;height: 100px; margin-left: -10px;" : ""
+                var item ="<li class='collection-ite'>"+
+                            "<div class='row'><h5>"+description+"</h5></div>"+
+                            "<div class='center'><img class='circle' src='"+image+"' style='"+style+"'></div>"+
+                            "<div class='row center'><span class='badge typebadge'>"+name+"</span></div>"+
+                            "<div class='center'><h5>R$00,00</h5></div>"+
+                            "<a href='viagem.html' class='waves-effect waves-teal btn'>Escolher UberX</a>"+
+                        "</li>"
+                items.push(item);
+            });
+            
+
+
+            $( "<ul/>", {
+                "class": "collection list",
+                html: items.join( "" )
+            }).appendTo( "#lista" );
+        });
+    </script>
+
+
   </head>
 
   <body>
-
-
-        <div class="container control">
-          <br><br>
-          <div class="row center">
-            <div class="row">
-                <div class="col s12 m6">
-                  <div class="card">
-                    <div class="card-content">
-                            <p class="step">Passo 3 de 4</p>
-                        <span class="card-title"><h4>Modalidade:</h4> </span>
-                      <ul class="collection list" >
-                        
-                        <li class="collection-item">
-                                <div class="row"><h5>Opção mais barata</h5></div>
-                                <div class="center"><img class="circle" src="src/uberx.png"></div>
-                                <div class="row center"><span class="badge typebadge">UberX</span></div>
-                                <div class="center"><h5>R$00,00</h5></div>
-                                <a href="viagem.html" class="waves-effect waves-teal btn">Escolher UberX</a>
-                        </li>
-                        <li class="collection-item">
-                                <div class="row"><h5>Opção mais confortável</h5></div>
-                                <div class="center"><img class="circle" src="src/black.JPG" style="width: 105px;height: 100px;     margin-left: -10px;"></div>
-                                <div class="row center"><span class="badge typebadge">Uber black</span></div>
-                                <div class="center"><h5>R$+00,00</h5></div>
-                                <a href="viagem.html" class="waves-effect waves-teal btn" style="z-index: auto;">Escolher Uber Black</a>
-                        </li>
-                      </ul>
+            <div class="container control">
+            <br><br>
+            <div class="row center">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card">
+                            <div class="card-content">
+                                <p class="step">Passo 3 de 4</p>
+                                <span class="card-title">
+                                    <h4>Modalidade:</h4>
+                                </span>
+                                <div id="lista">
+                                
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>    
-          </div>
-                        
-            
+            </div>
+
+
         </div>
-        <div class="floating">
+              <div class="floating">
                 <a href="endereco.html" class="waves-effect waves-light btn-large">Voltar <i class="material-icons left">arrow_back</i></a>
             </div>
- 
-
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
+
   </body>
 </html>
-      
