@@ -41,7 +41,7 @@
 
             $.each(stations, function(key,station) {
                 let param = 'lng='+station.long+'&lat='+station.lat;
-                items.push( "<li class='collection-item avatar' id='" + (station.title) + "'><i class='material-icons circle'>location_on</i><div class='local'><span class='title'>"+(station.title)+"</span><p>"+(station.address)+"</p></div><a href='modalidade.html?"+param+"' class='secondary-content btn'>Ir</a></li>" );
+                items.push( "<li class='collection-item avatar' id='" + (station.title) + "'><i class='material-icons circle'>location_on</i><div class='local'><span class='title'>"+(station.title)+"</span><p>"+(station.address)+"</p></div><a href='modalidade.html?"+param+"' class='secondary-content btn'>Ir<i class='material-icons right'>send</i></a></li>" );
             })
 
 
@@ -81,7 +81,7 @@
 
         </div>
                 <div class="floating">
-                    <a href="index.html" class="waves-effect waves-light btn-large">Voltar</a>
+                    <a href="index.html" class="waves-effect waves-light btn-large">Voltar<i class="material-icons left">arrow_back</i></a>
                 </div>
 
 
