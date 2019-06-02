@@ -10,17 +10,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
-        $.getJSON( "src/stations.json", function( data ) {
-        var items = [];
-        $.each( data, function( key, val ) {
-            //let stations = JSON.stringify(val);
-            items.push( "<li id='" + key + "'>" + val.title + "</li>" );
-        });
+        $.urlParam = function(name){
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            return results[1] || 0;
+
+        }
         
-        $( "<ul/>", {
-            "class": "my-new-list",
-            html: items.join( "" )
-        }).appendTo( "body" );
+        $.getJSON( "src/stations.json", function( data ) {
+            var items = [];
+            var stations = [];
+            var str = $.urlParam('s');
+            var r = new RegExp(decodeURI(str), 'i');
+            $.each( data, function( key, val ) {
+                
+                var station = {title: val.title, long: val.location.longitude.toString(), lat: val.location.latitude.toString()};
+                if(station.title.search(r)!=-1)
+                    stations.push(station);
+
+
+            });
+
+            $.each(stations, function(key,station) {
+                items.push( "<li id='" + station.title + "'><p>Estação: "+station.title+"</p><p>Longitude: "+station.long+"</p><p>Latitude: "+station.lat+"</p></li>" );
+            })
+
+
+
+            $( "<ul/>", {
+                "class": "my-new-list",
+                html: items.join( "" )
+            }).appendTo( "body" );
         });
     </script>
 
@@ -28,7 +47,6 @@
   </head>
 
   <body>
-
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
 
